@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Gesture Control</string>
+    <string-array name="gestures">
+        <item>Select...</item>
+        <item>Zero</item>
+        <item>One</item>
+        <item>Tow</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Decrease Fan</item>
+        <item>Increase Fan</item>
+        <item>Fan Off</item>
+        <item>Fan On</item>
+        <item>Light On</item>
+        <item>Light Off</item>
+        <item>Set Thermostat</item>
+    </string-array>
 </resources>
