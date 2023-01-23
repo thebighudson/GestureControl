@@ -11,6 +11,13 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This activity has a VideoView to play the chosen gesture video.
+ * It also contains 3 buttons
+ * -Back: return to the main view where you can select a new gesture
+ * -Replay: allows user to replay the video again
+ * -Record: Will send user to the record activity where they can record their own gesture
+ */
 public class ViewActivity extends AppCompatActivity {
 
     private String videoUri;
@@ -25,7 +32,7 @@ public class ViewActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Setup button listeners for the 3 buttons on the view activity.
      */
     private void handleButtons() {
         Button backButton = (Button) findViewById(R.id.backButton);
@@ -54,11 +61,13 @@ public class ViewActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Determines which gester has been selected from the dropdown and sets the class variable
+     * videoUri.
      */
     private void handleVideoPlayback() {
         // Get the video name from the main activity and play it from the server
         String selectedGesture = getIntent().getStringExtra("gesture_name");
+     //   String id = getIntent().getStringExtra("id");
         //use a switch to get video URL based on selected gesture
         StringBuilder uriString = new StringBuilder("https://scaryguy.pythonanywhere.com/static/files/");
 
@@ -122,13 +131,15 @@ public class ViewActivity extends AppCompatActivity {
         VideoView videoView = findViewById(R.id.videoView);
 
         this.videoUri = String.valueOf(uriString);
-        Uri uri = Uri.parse(this.videoUri);
-        videoView.setMediaController(new MediaController(this));
-        videoView.setVideoURI(uri);
-        videoView.requestFocus();
-        videoView.start();
+
+        playVideo();
     }
 
+    /**
+     * This function uses the set videoUri and plays the selected gesture video.
+     *
+     * This is also used by the replay button.
+     */
     public void playVideo(){
         VideoView videoView = findViewById(R.id.videoView);
 

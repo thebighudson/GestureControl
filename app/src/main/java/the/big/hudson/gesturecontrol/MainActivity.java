@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //getWindow().getDecorView().setBackgroundColor(Color.BLUE);
+
         Spinner gestures = findViewById(R.id.gestures);
 
         //Create adapter so we can attach our gesture items to the spinner widget
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 // Call to ViewActivity with selected gesture
                 Intent viewIntent = new Intent(MainActivity.this, ViewActivity.class);
                 viewIntent.putExtra("gesture_name", parentView.getItemAtPosition(position).toString());
+                viewIntent.putExtra("id", id);
                 startActivity(viewIntent);
             }
 
