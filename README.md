@@ -1,4 +1,4 @@
-Gesture Control
+#Gesture Control
 
 Android Mobile application for a smart home.
 
