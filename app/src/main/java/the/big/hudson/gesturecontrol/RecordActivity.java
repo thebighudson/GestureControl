@@ -55,8 +55,7 @@ public class RecordActivity extends AppCompatActivity {
         Button uploadButton = (Button) findViewById(R.id.uploadButton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               // Get the current videoUri and then upload that file to
-                // my PythonAnywhere server
+               uploadVideo();
             }
         });
 
@@ -93,7 +92,7 @@ public class RecordActivity extends AppCompatActivity {
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        this.videoUri = data.getData();
+        videoUri = data.getData();
 
         //Open file and rename??
 
@@ -104,7 +103,7 @@ public class RecordActivity extends AppCompatActivity {
 
                 // TODO: Upload video
                 File video = new File(videoUri.getPath());
-                uploadVideo(this.videoUri);
+              //  uploadVideo(videoUri);
 
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Video recording cancelled.",
@@ -118,9 +117,8 @@ public class RecordActivity extends AppCompatActivity {
 
     /**
      * Upload video to Firebase
-     * @param videoUri
      */
-    private void uploadVideo(Uri videoUri) {
+    private void uploadVideo() {
         if (videoUri!= null) {
 
             //Firebase references

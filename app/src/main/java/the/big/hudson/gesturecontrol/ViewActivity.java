@@ -3,7 +3,6 @@ package the.big.hudson.gesturecontrol;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -46,7 +45,6 @@ public class ViewActivity extends AppCompatActivity {
         Button recordButton = (Button) findViewById(R.id.recordButton);
         recordButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("TEST", "WHAT THE FUCK");
                 Intent recordActivity = new Intent(ViewActivity.this, RecordActivity.class);
                 startActivity(recordActivity);
             }
@@ -67,10 +65,8 @@ public class ViewActivity extends AppCompatActivity {
     private void handleVideoPlayback() {
         // Get the video name from the main activity and play it from the server
         String selectedGesture = getIntent().getStringExtra("gesture_name");
-       // String id = getIntent().getStringExtra("id");
 
         StringBuilder uriString = new StringBuilder("https://scaryguy.pythonanywhere.com/static/files/");
-      //  StringBuilder uriString = new StringBuilder("http://172.30.52.73:5000/static/files/");
 
         //use a switch to get video URL based on selected gesture
         switch (selectedGesture) {
