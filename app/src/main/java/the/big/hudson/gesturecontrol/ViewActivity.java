@@ -67,10 +67,12 @@ public class ViewActivity extends AppCompatActivity {
     private void handleVideoPlayback() {
         // Get the video name from the main activity and play it from the server
         String selectedGesture = getIntent().getStringExtra("gesture_name");
-     //   String id = getIntent().getStringExtra("id");
-        //use a switch to get video URL based on selected gesture
-        StringBuilder uriString = new StringBuilder("https://scaryguy.pythonanywhere.com/static/files/");
+       // String id = getIntent().getStringExtra("id");
 
+        StringBuilder uriString = new StringBuilder("https://scaryguy.pythonanywhere.com/static/files/");
+      //  StringBuilder uriString = new StringBuilder("http://172.30.52.73:5000/static/files/");
+
+        //use a switch to get video URL based on selected gesture
         switch (selectedGesture) {
             case "Zero":
                 uriString.append("H-0.mp4");
