@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,10 @@ public class ViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
+        String selectedGesture = getIntent().getStringExtra("gesture_name");
+        TextView gestureLabel = (TextView) findViewById(R.id.textView);
+        gestureLabel.setText(selectedGesture);
+
         this.handleButtons();
         this.handleVideoPlayback();
     }
@@ -45,8 +50,11 @@ public class ViewActivity extends AppCompatActivity {
         Button recordButton = (Button) findViewById(R.id.recordButton);
         recordButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent recordActivity = new Intent(ViewActivity.this, RecordActivity.class);
-                startActivity(recordActivity);
+                String selectedGesture = getIntent().getStringExtra("gesture_name");
+
+                Intent recordIntent = new Intent(ViewActivity.this, RecordActivity.class);
+                recordIntent.putExtra("gesture_name", selectedGesture);
+                startActivity(recordIntent);
             }
         });
 
