@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
 
 /**
  * Activity for recording and uploading videos
@@ -80,7 +77,7 @@ public class RecordActivity extends AppCompatActivity {
     public void startRecording()
     {
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        intent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true);
+      //  intent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true);
         intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
         startActivityForResult(intent, VIDEO_CAPTURE);
     }
@@ -126,21 +123,6 @@ public class RecordActivity extends AppCompatActivity {
     private void uploadVideo() {
         if (videoUri!= null) {
 
-            String selectedGesture = getIntent().getStringExtra("gesture_name");
-            String gestureFileName = selectedGesture.replaceAll("\\s", "");
-
-
-            File videoFile = new File(videoUri.getPath());
-            //videoFile.renameTo(new File(gestureFileName + "_" + "PRACTICE"));
-            videoFile.renameTo(new File("SHIT"));
-            Uri newUri = Uri.parse(videoFile.getPath());
-
-            Log.d("TEST", "*******************");
-            Log.d("TEST", String.valueOf(videoUri));
-            Log.d("TEST", String.valueOf(newUri));
-            Log.d("TEST", "*******************");
-           // Log.d(videoFile);
-           // videoFile.renameTo();
             //Firebase references
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
