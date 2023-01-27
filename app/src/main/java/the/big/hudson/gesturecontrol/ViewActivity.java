@@ -91,7 +91,7 @@ public class ViewActivity extends AppCompatActivity {
                 uriString.append("H-3.mp4");
                 break;
             case "Four":
-                uriString.append("H-04.mp4");
+                uriString.append("H-4.mp4");
                 break;
             case "Five":
                 uriString.append("H-5.mp4");
