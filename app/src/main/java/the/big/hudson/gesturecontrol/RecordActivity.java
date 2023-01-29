@@ -77,7 +77,9 @@ public class RecordActivity extends AppCompatActivity {
     public void startRecording()
     {
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-      //  intent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true);
+        //Decided not to use front facing camera because its easier to record otherwise
+        //But this is how you can launch with front camera if you wanted to
+        //intent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true);
         intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
         startActivityForResult(intent, VIDEO_CAPTURE);
     }
@@ -91,13 +93,6 @@ public class RecordActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         videoUri = data.getData();
-
-        // Example Uri - content://media/external/video/media/1000001184
-        //Open file and rename
-        // Do we have which gesture was selected
-        // need to get last instance of / and replace text after that with...
-        // [GESTURE NAME]_PRACTICE_[practice number].mp4
-        // ex LightOn_PRACTICE_[practice number]
 
         if (requestCode == VIDEO_CAPTURE) {
             if (resultCode == RESULT_OK) {
